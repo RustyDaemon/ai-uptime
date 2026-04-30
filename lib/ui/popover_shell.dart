@@ -78,11 +78,13 @@ class _PopoverShellState extends ConsumerState<PopoverShell> {
                         glyph: IconGlyphKind.refresh,
                         onTap: () => appStatusController.refreshNow(),
                       ),
-                      const SizedBox(width: 2),
-                      AppIconButton(
-                        glyph: IconGlyphKind.close,
-                        onTap: _hidePopover,
-                      ),
+                      if (!Platform.isLinux) ...[
+                        const SizedBox(width: 2),
+                        AppIconButton(
+                          glyph: IconGlyphKind.close,
+                          onTap: _hidePopover,
+                        ),
+                      ],
                     ],
                   ),
                 ),
